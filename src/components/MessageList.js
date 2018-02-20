@@ -65,7 +65,6 @@ class MessageList extends Component {
 
     return(
       <div className="list">
-        <div>{activeRoom}</div>
         <div>{messageBar}</div>
         <ul>{messageList}</ul>
       </div>

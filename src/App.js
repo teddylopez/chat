@@ -21,7 +21,7 @@ class App extends Component {
       this.state = {
         activeRoom: ''
       };
-      //this.setRoom = this.setRoom.bind(this);
+      this.setRoom = this.setRoom.bind(this);
     }
 
   setRoom(room) {
@@ -29,6 +29,7 @@ class App extends Component {
   }
 
   render() {
+    const showMessages = this.state.activeRoom;
     return (
       <div className="App">
         <nav id="main">
@@ -47,7 +48,7 @@ class App extends Component {
         <div className="main-container">{this.state.activeRoom.name || "Select A Room"}</div>
           <MessageList
             firebase={firebase}
-            setRoom={this.state.activeRoom}
+            setRoom={this.setRoom.bind(this)}
           />
         </main>
       </div>

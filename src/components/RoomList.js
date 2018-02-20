@@ -49,7 +49,7 @@ class RoomList extends Component {
           <div>{roomForm}</div>
           <ul className="room-names">
             {this.state.rooms.map( room =>
-                <li key={room.key} onClick={(e) => this.selectRoom(room, e)}>{room.name}</li>
+              <li key={room.key} onClick={(e) => this.selectRoom(room, e)}>{room.name}</li>
             )}
           </ul>
         </div>

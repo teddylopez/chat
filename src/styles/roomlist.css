@@ -11,6 +11,8 @@
 
 .room-names li {
   padding-bottom: 3rem;
+  cursor: pointer;
+  color: black;
 }
 
 form {
