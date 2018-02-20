@@ -1,0 +1,19 @@
+
+.chat-list {
+  margin-top: 7rem;
+}
+
+.room-names {
+  list-style-type: none;
+  list-style:none;
+  padding-left: 1rem;
+  color: #757575;
+}
+
+.room-names li {
+  padding-bottom: 3rem;
+}
+
+form {
+  padding-left: 1rem;
+}
