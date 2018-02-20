@@ -19,29 +19,36 @@ class App extends Component {
   constructor(props) {
     super(props);
       this.state = {
-        activeRoom: null
+        activeRoom: ''
       };
-      this.setRoom = this.setRoom.bind(this);
+      //this.setRoom = this.setRoom.bind(this);
     }
 
-setRoom(room) {
-  this.setState({ activeRoom: room })
-}
+  setRoom(room) {
+    this.setState({ activeRoom: room })
+  }
 
   render() {
     return (
       <div className="App">
         <nav id="main">
-          Chat
+          tedchat
         </nav>
 
         <aside id="sidebar">
           <div id="logo"></div>
-          <h1 id="wordmark">TedChat</h1>
-          <RoomList firebase={firebase} />
+          <h1 id="wordmark">Chat!</h1>
+          <RoomList
+            firebase={firebase}
+            setRoom={this.setRoom.bind(this)}
+          />
         </aside>
         <main>
-          <MessageList firebase={firebase} setRoom={this.setRoom} />
+        <div className="main-container">{this.state.activeRoom.name || "Select A Room"}</div>
+          <MessageList
+            firebase={firebase}
+            setRoom={this.state.activeRoom}
+          />
         </main>
       </div>
     );

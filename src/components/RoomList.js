@@ -11,6 +11,7 @@ class RoomList extends Component {
     this.roomsRef = this.props.firebase.database().ref('rooms');
     this.handleChange = this.handleChange.bind(this);
     this.createRoom = this.createRoom.bind(this);
+    this.selectRoom = this.selectRoom.bind(this);
   }
 
   handleChange(e) {
@@ -31,6 +32,10 @@ class RoomList extends Component {
     });
   }
 
+  selectRoom(room) {
+    this.props.setRoom(room);
+  }
+
   render() {
     const roomForm = (
       <form onSubmit={this.createRoom}>
@@ -39,13 +44,14 @@ class RoomList extends Component {
         </form>
       );
 
-      const roomList = this.state.rooms.map((room) =>
-        <li key={room.key}>{room.name}</li>
-      );
       return(
         <div className="chat-list">
           <div>{roomForm}</div>
-          <ul className="room-names">{roomList}</ul>
+          <ul className="room-names">
+            {this.state.rooms.map( room =>
+                <li key={room.key} onClick={(e) => this.selectRoom(room, e)}>{room.name}</li>
+            )}
+          </ul>
         </div>
       );
     }
