@@ -21,7 +21,7 @@ class App extends Component {
     super(props);
       this.state = {
         activeRoom: '',
-        user: ''
+        user: 'tedlopez'
       };
       this.setRoom = this.setRoom.bind(this);
       this.setUser = this.setUser.bind(this);
@@ -37,6 +37,8 @@ class App extends Component {
 
   render() {
     const showMessages = this.state.activeRoom;
+    const currentUser = this.state.user === null ? "Guest" : this.state.user.displayName;
+
     return (
       <div className="App">
         <nav id="main">
@@ -64,7 +66,7 @@ class App extends Component {
             activeRoom={this.state.activeRoom}
             setRoom={this.setRoom.bind(this)}
             setUser={this.setUser.bind(this)}
-            user={this.state.user}
+            user={this.state.user.displayName}
           />
         </main>
       </div>

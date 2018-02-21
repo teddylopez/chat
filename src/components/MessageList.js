@@ -5,7 +5,7 @@ class MessageList extends Component {
   constructor(props) {
     super(props);
       this.state = {
-        username: "",
+        username: this.props.user,
         content: "",
         sentAt: "",
         roomId: "",
@@ -47,6 +47,7 @@ class MessageList extends Component {
 
   render() {
     const activeRoom = this.props.activeRoom.key;
+    const activeUser = this.props.user;
 
     const messageBar = (
       <form onSubmit={this.createMessage}>
@@ -58,7 +59,7 @@ class MessageList extends Component {
     const messageList = (
       this.state.messages.map((message) => {
         if (message.roomId === activeRoom) {
-          return <li key={message.key}>{message.content}</li>
+          return <li key={message.key}>{message.username}: {message.content}</li>
         }
       })
     );
