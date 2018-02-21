@@ -51,8 +51,12 @@ class MessageList extends Component {
 
     const messageBar = (
       <form id='create-message' onSubmit={this.createMessage}>
-        <input type='text' value={this.state.content} placeholder="Enter Message" onChange={this.handleChange} id="msg-field"/>
+        <div className="message-input-wrapper">
+          <input type='text' value={this.state.content} placeholder="Say something..." onChange={this.handleChange} id="msg-field"/>
+        </div>
+      <div className="message-send-wrapper">
         <input type="submit" value="Send" id="msg-send"/>
+      </div>
       </form>
     );
 

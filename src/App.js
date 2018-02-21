@@ -39,6 +39,10 @@ class App extends Component {
     const showMessages = this.state.activeRoom;
     const currentUser = this.state.user === null ? "Guest" : this.state.user.displayName;
 
+    const emptyRoom = (
+      <div className="empty">pick a room</div>
+    );
+
     return (
       <div className="App">
         <nav id="main">
@@ -60,7 +64,7 @@ class App extends Component {
           />
         </aside>
         <main>
-        <div className="main-container">{this.state.activeRoom.name || "Select A Room"}</div>
+        <div className="main-container">{this.state.activeRoom.name || emptyRoom }</div>
           <MessageList
             firebase={firebase}
             activeRoom={this.state.activeRoom}
