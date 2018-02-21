@@ -41,13 +41,13 @@ class App extends Component {
     const currentUser = this.state.user === null ? "Guest" : this.state.user.displayName;
 
     const emptyRoom = (
-      <div className="empty">pick a room</div>
+      <div className="empty">pick a thread</div>
     );
 
     return (
       <div className="App">
         <nav id="main">
-          <span id="logo">tedchat</span>
+          <span id="logo">thread</span>
           <User
             firebase={firebase}
             setUser={this.setUser.bind(this)}
@@ -56,7 +56,7 @@ class App extends Component {
         </nav>
 
         <aside id="sidebar">
-          <h1 id="wordmark">Chat!</h1>
+          <h1 id="wordmark">All Threads</h1>
           <RoomList
             firebase={firebase}
             activeRoom={this.state.activeRoom}

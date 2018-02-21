@@ -14,14 +14,37 @@ class MessageList extends Component {
       this.messagesRef = this.props.firebase.database().ref("messages");
       this.handleChange = this.handleChange.bind(this);
       this.createMessage = this.createMessage.bind(this);
+      //this.popout = this.popout.bind(this);
   }
 
   validateMessage(str) {
     const msgContent = str || this.state.content;
     const msgLength = msgContent.trim().length;
-    if (msgLength > 0 ) { return true; }
-    else { return false; }
+    if (msgLength > 0 && (this.props.activeRoom !== "")) { return true; }
+    else {
+      //this.popout();
+      alert("You must first pick a thread.");
+      return false;
+    }
   }
+
+/*
+  popout() {
+    const customAlert = (
+      <div id="custom-alert">
+        <div id="dialogoverlay">YOOOOOOOOOO</div>
+        <div id="dialogbox">
+          <div>
+            <div id="dialogboxhead"></div>
+            <div id="dialogboxbody"></div>
+            <div id="dialogboxfoot"></div>
+          </div>
+        </div>
+      </div>
+    );
+    return {customAlert};
+  }
+  */
 
   handleChange(e) {
     e.preventDefault();
@@ -34,15 +57,17 @@ class MessageList extends Component {
   }
 
   createMessage(e) {
-    const messagesRef = this.props.firebase.database().ref("messages/" + this.props.activeRoom);
+    const activeRoom = this.props.activeRoom.key;
+    const messagesRef = this.props.firebase.database().ref("messages");
     e.preventDefault();
     if (this.validateMessage()) {
       messagesRef.push({
         username: this.state.username,
         content: this.state.content,
-        sentAt: this.state.sentAt
+        sentAt: this.state.sentAt,
+        roomId: activeRoom
       });
-      this.setState({ username: "", content: "", sentAt: ""});
+      this.setState({ username: "", content: "", sentAt: "", roomId: ""});
     }
   }
 

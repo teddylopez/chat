@@ -1,12 +1,13 @@
 
 .chat-list {
   font-family: 'Ubuntu', sans-serif;
+  font-size: 20px;
   margin-top: 7rem;
   overflow:hidden;
 }
 
 .chat-list::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .room-names {
@@ -16,9 +17,14 @@
 }
 
 .room-names li {
-  padding-bottom: 3rem;
+  padding-bottom: 1rem;
   cursor: pointer;
   color: black;
+}
+
+.room-names li:hover {
+  padding-left: 1rem;
+  transition: all .3s ease;
 }
 
 .chat-list form {

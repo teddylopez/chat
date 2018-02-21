@@ -12,6 +12,18 @@ class RoomList extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.createRoom = this.createRoom.bind(this);
     this.selectRoom = this.selectRoom.bind(this);
+    this.validateRoom = this.validateRoom.bind(this);
+  }
+
+  validateRoom(str) {
+    const roomContent = str || this.state.name;
+    const roomLength = roomContent.trim().length;
+    if (roomLength > 0) { return true; }
+    else {
+      //this.popout();
+      alert("Your thread must have a name!");
+      return false;
+    }
   }
 
   handleChange(e) {
@@ -20,8 +32,10 @@ class RoomList extends Component {
 
   createRoom(e) {
     e.preventDefault();
-    this.roomsRef.push({ name: this.state.name });
-    this.setState({ name: "" });
+    if (this.validateRoom()) {
+      this.roomsRef.push({ name: this.state.name });
+      this.setState({ name: "" });
+    }
   }
 
   componentDidMount() {
