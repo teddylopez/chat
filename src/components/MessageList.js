@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './../styles/messagelist.css';
 
 class MessageList extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class MessageList extends Component {
       username: this.state.username,
       content: this.state.content,
       sentAt: this.state.sentAt,
-      roomId: this.state.roomId
+      roomId: this.props.activeRoom.key
     });
     this.setState({ username: "", content: "", sentAt: "", roomId: "" });
   }
@@ -45,7 +46,7 @@ class MessageList extends Component {
   }
 
   render() {
-    const activeRoom = this.props.activeRoom;
+    const activeRoom = this.props.activeRoom.key;
 
     const messageBar = (
       <form onSubmit={this.createMessage}>
@@ -59,14 +60,13 @@ class MessageList extends Component {
         if (message.roomId === activeRoom) {
           return <li key={message.key}>{message.content}</li>
         }
-        return null;
       })
     );
 
     return(
       <div className="list">
         <div>{messageBar}</div>
-        <ul>{messageList}</ul>
+        <ul id="user-messages">{messageList}</ul>
       </div>
     );
   }

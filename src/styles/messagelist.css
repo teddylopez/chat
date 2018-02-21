@@ -1,0 +1,7 @@
+
+#user-messages li {
+  text-align: left;
+  width: 90%;
+  border-bottom: 1px solid #E9E9E9;
+  padding: 1rem 0;
+}

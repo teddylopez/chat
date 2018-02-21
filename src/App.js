@@ -41,6 +41,7 @@ class App extends Component {
           <h1 id="wordmark">Chat!</h1>
           <RoomList
             firebase={firebase}
+            activeRoom={this.state.activeRoom}
             setRoom={this.setRoom.bind(this)}
           />
         </aside>
@@ -48,6 +49,7 @@ class App extends Component {
         <div className="main-container">{this.state.activeRoom.name || "Select A Room"}</div>
           <MessageList
             firebase={firebase}
+            activeRoom={this.state.activeRoom}
             setRoom={this.setRoom.bind(this)}
           />
         </main>
