@@ -50,9 +50,9 @@ class MessageList extends Component {
     const activeUser = this.props.user;
 
     const messageBar = (
-      <form onSubmit={this.createMessage}>
-        <input type="text" value={this.state.content} placeholder="Enter Message" onChange={this.handleChange}/>
-        <input type="submit" value="Send" />
+      <form id='create-message' onSubmit={this.createMessage}>
+        <input type='text' value={this.state.content} placeholder="Enter Message" onChange={this.handleChange} id="msg-field"/>
+        <input type="submit" value="Send" id="msg-send"/>
       </form>
     );
 
@@ -66,8 +66,8 @@ class MessageList extends Component {
 
     return(
       <div className="list">
-        <div>{messageBar}</div>
         <ul id="user-messages">{messageList}</ul>
+        <div id="message-box">{messageBar}</div>
       </div>
     );
   }

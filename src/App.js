@@ -43,7 +43,8 @@ class App extends Component {
       <div className="App">
         <nav id="main">
           <span id="logo">tedchat</span>
-          <User firebase={firebase}
+          <User
+            firebase={firebase}
             setUser={this.setUser.bind(this)}
             user={this.state.user}
           />
@@ -55,7 +56,6 @@ class App extends Component {
             firebase={firebase}
             activeRoom={this.state.activeRoom}
             setRoom={this.setRoom.bind(this)}
-            setUser={this.setUser.bind(this)}
             user={this.state.user}
           />
         </aside>
@@ -65,8 +65,7 @@ class App extends Component {
             firebase={firebase}
             activeRoom={this.state.activeRoom}
             setRoom={this.setRoom.bind(this)}
-            setUser={this.setUser.bind(this)}
-            user={this.state.user.displayName}
+            user={currentUser}
           />
         </main>
       </div>

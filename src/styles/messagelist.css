@@ -6,3 +6,23 @@
   padding: 1rem 0;
   list-style-type: none;
 }
+
+#create-message {
+  position: fixed;
+  border-top: 2px solid #E9E9E9;
+  bottom: 0;
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+}
+
+#msg-field {
+  width: 90%;
+  background: white;
+  overflow: scroll;
+}
+
+#msg-send {
+  width: 10%;
+
+}

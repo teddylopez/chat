@@ -29,11 +29,14 @@ class User extends Component {
   }
 
   render() {
-      return(
-        <div className="login-btn">
-          <button onClick={this.signIn}>Sign In</button>
-          <button onClick={this.signOut}>Sign Out</button>
-        </div>
+    return(
+      <div className="login-btn">
+
+        <button className="sign-in-out" onClick={ this.props.user ? this.signOut.bind(this) : this.signIn.bind(this) }>
+          <span>Sign { this.props.user ? 'out' : 'in' }</span>
+        </button>
+
+      </div>
       );
     }
 }
