@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route, Link } from 'react-router-dom';
 import './../styles/user.css';
 
 class User extends Component {
@@ -31,11 +32,9 @@ class User extends Component {
   render() {
     return(
       <div className="login-btn">
-
         <button className="sign-in-out" onClick={ this.props.user ? this.signOut.bind(this) : this.signIn.bind(this) }>
           <span>Sign { this.props.user ? 'out' : 'in' }</span>
         </button>
-
       </div>
       );
     }

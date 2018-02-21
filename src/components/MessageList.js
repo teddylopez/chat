@@ -16,6 +16,13 @@ class MessageList extends Component {
       this.createMessage = this.createMessage.bind(this);
   }
 
+  validateMessage(str) {
+    const msgContent = str || this.state.content;
+    const msgLength = msgContent.trim().length;
+    if (msgLength > 0 ) { return true; }
+    else { return false; }
+  }
+
   handleChange(e) {
     e.preventDefault();
     this.setState({
@@ -27,14 +34,16 @@ class MessageList extends Component {
   }
 
   createMessage(e) {
+    const messagesRef = this.props.firebase.database().ref("messages/" + this.props.activeRoom);
     e.preventDefault();
-    this.messagesRef.push({
-      username: this.props.user,
-      content: this.state.content,
-      sentAt: this.state.sentAt,
-      roomId: this.props.activeRoom.key
-    });
-    this.setState({ username: "", content: "", sentAt: "", roomId: "" });
+    if (this.validateMessage()) {
+      messagesRef.push({
+        username: this.state.username,
+        content: this.state.content,
+        sentAt: this.state.sentAt
+      });
+      this.setState({ username: "", content: "", sentAt: ""});
+    }
   }
 
   componentDidMount() {
@@ -52,7 +61,7 @@ class MessageList extends Component {
     const messageBar = (
       <form id='create-message' onSubmit={this.createMessage}>
         <div className="message-input-wrapper">
-          <input type='text' value={this.state.content} placeholder="Say something..." onChange={this.handleChange} id="msg-field"/>
+          <input type='text' value={this.state.content} placeholder="Say something..." autocomplete="off" onChange={this.handleChange} id="msg-field"/>
         </div>
       <div className="message-send-wrapper">
         <input type="submit" value="Send" id="msg-send"/>

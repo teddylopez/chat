@@ -39,7 +39,7 @@ class RoomList extends Component {
   render() {
     const roomForm = (
       <form onSubmit={this.createRoom}>
-        <input type="text" value={this.state.name} placeholder="Room Name" onChange={this.handleChange} id="room-input"/>
+        <input type="text" value={this.state.name} placeholder="Room Name" autocomplete="off" onChange={this.handleChange} id="room-input"/>
         <div id="new-room">
           <input type="submit" value="Create" id="room-submit" />
         </div>
