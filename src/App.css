@@ -21,10 +21,14 @@
   color: #fff;
 }
 #logo {
-  background-position: 50%;
-  height: 20px;
-  width: 100%;
-  margin: 0rem 0;
+  font-weight: 700;
+  font-size: .85em;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  padding: 1rem;
+  text-decoration: none;
+  color: #424652;
+  float: left;
 }
 h1#wordmark {
   padding-left: 1rem;
