@@ -21,7 +21,7 @@ class RoomList extends Component {
     if (roomLength > 0) { return true; }
     else {
       //this.popout();
-      alert("Your thread must have a name!");
+      alert("Your new thread must have a name!");
       return false;
     }
   }

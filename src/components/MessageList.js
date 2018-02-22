@@ -23,7 +23,7 @@ class MessageList extends Component {
     if (msgLength > 0 && (this.props.activeRoom !== "")) { return true; }
     else {
       //this.popout();
-      alert("You must first pick a thread.");
+      alert("Say something!");
       return false;
     }
   }
