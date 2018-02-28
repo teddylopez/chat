@@ -20,7 +20,6 @@ class RoomList extends Component {
     const roomLength = roomContent.trim().length;
     if (roomLength > 0) { return true; }
     else {
-      //this.popout();
       alert("Your new thread must have a name!");
       return false;
     }
@@ -38,11 +37,19 @@ class RoomList extends Component {
     }
   }
 
+  deleteRoom(room) {
+    this.roomsRef.child(room.key).remove();
+  }
+
   componentDidMount() {
     this.roomsRef.on('child_added', snapshot => {
       const room = snapshot.val();
       room.key = snapshot.key;
       this.setState({ rooms: this.state.rooms.concat( room ) })
+      if (this.state.rooms.length === 1) { this.props.setRoom(room) }
+    });
+    this.roomsRef.on('child_removed', snapshot  => {
+      this.setState({ rooms: this.state.rooms.filter( room => room.key !== snapshot.key )  })
     });
   }
 
@@ -65,7 +72,9 @@ class RoomList extends Component {
           <div>{roomForm}</div>
           <ul className="room-names">
             {this.state.rooms.map( room =>
-              <li key={room.key} onClick={(e) => this.selectRoom(room, e)}>{room.name}</li>
+              <li key={room.key} onClick={(e) => this.selectRoom(room, e)}>{room.name}
+                <button onClick={ () => this.deleteRoom(room) }>X</button>
+              </li>
             )}
           </ul>
         </div>

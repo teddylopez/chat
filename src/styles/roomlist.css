@@ -27,6 +27,19 @@
   transition: all .3s ease;
 }
 
+.room-names li button {
+  margin-top: 5px;
+  float: right;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.room-names li button:hover {
+  transform: scale(1.2);
+  color: #ccc!important;
+}
+
+
 .chat-list form {
   padding-left: 1rem;
 }

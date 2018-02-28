@@ -14,7 +14,6 @@ class MessageList extends Component {
       this.messagesRef = this.props.firebase.database().ref("messages");
       this.handleChange = this.handleChange.bind(this);
       this.createMessage = this.createMessage.bind(this);
-      //this.popout = this.popout.bind(this);
   }
 
   validateMessage(str) {
@@ -22,29 +21,10 @@ class MessageList extends Component {
     const msgLength = msgContent.trim().length;
     if (msgLength > 0 && (this.props.activeRoom !== "")) { return true; }
     else {
-      //this.popout();
-      alert("Say something!");
+      alert("Pick a thread and say something!");
       return false;
     }
   }
-
-/*
-  popout() {
-    const customAlert = (
-      <div id="custom-alert">
-        <div id="dialogoverlay">YOOOOOOOOOO</div>
-        <div id="dialogbox">
-          <div>
-            <div id="dialogboxhead"></div>
-            <div id="dialogboxbody"></div>
-            <div id="dialogboxfoot"></div>
-          </div>
-        </div>
-      </div>
-    );
-    return {customAlert};
-  }
-  */
 
   handleChange(e) {
     e.preventDefault();
