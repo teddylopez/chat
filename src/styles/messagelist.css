@@ -25,6 +25,11 @@
   height: 4rem;
 }
 
+#create-message {
+  background-color: white;
+  position: fixed;
+}
+
 #msg-field {
   height: 100%;
   width: 100%;
