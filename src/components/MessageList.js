@@ -57,6 +57,11 @@ class MessageList extends Component {
       message.key = snapshot.key;
       this.setState({ messages: this.state.messages.concat(message) })
     });
+    this.scrollToBottom();
+  }
+
+  scrollToBottom() {
+    this.bottomOfMessages.scrollIntoView();
   }
 
   render() {
@@ -85,6 +90,7 @@ class MessageList extends Component {
     return(
       <div className="list">
         <ul id="user-messages">{messageList}</ul>
+        <div ref={(thisDiv) => this.bottomOfMessages = thisDiv}></div>
         <div id="message-box">{messageBar}</div>
       </div>
     );
